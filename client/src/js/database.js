@@ -12,10 +12,8 @@ const initdb = async () =>
     },
   });
 
-// Initialize the database
 const dbPromise = initdb();
 
-// Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
   const db = await dbPromise;
   const tx = db.transaction('jate', 'readwrite');
@@ -24,7 +22,6 @@ export const putDb = async (content) => {
   await tx.done;
 };
 
-// Add logic for a method that gets all the content from the database
 export const getDb = async () => {
   const db = await dbPromise;
   const tx = db.transaction('jate', 'readonly');
