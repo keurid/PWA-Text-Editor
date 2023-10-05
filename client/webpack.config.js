@@ -16,14 +16,8 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        chunks: ['main'],
-      }),
-      new HtmlWebpackPlugin({
-        template: './src/install.html',
-        filename: 'install.html',
-        chunks: ['install'],
+        template: './index.html',
+        title: 'text editor',
       }),
 
       new WebpackPwaManifest({
@@ -32,17 +26,19 @@ module.exports = () => {
         description: 'A simple but effective note taker',
         background_color: '#ffffff',
         theme_color: '#2196F3',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
-            src: path.resolve('src/images/icon.png'),
+            src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
           },
         ],
       }),
 
       new InjectManifest({
-        swSrc: './src/service-worker.js',
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js',
+        swDest: 'src-sq.js',
       }),
     ],
 
